@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import Todorow from './Todorow';
 
-const Todotable = ({load}) => {
+const Todotable = ({value}) => {
     const [allTodos,setAllTodos] = useState([]);
+    const [click ,setClick] = value;
     const userId = window.localStorage.getItem("userID");
     useEffect(()=>{
         fetchTodos();
-    },[load])
+    },[click])
     const fetchTodos = async()=>{
         const response = await fetch(`http://localhost:8000/todos/gettodos?userID=${userId}`,{method:"GET",mode:"cors"})
         const data = await response.json();
@@ -16,7 +17,7 @@ const Todotable = ({load}) => {
     <div className='mt-6 w-full flex flex-col justify-center items-center space-y-3 p-2'>
       {
         allTodos.map((item)=>{
-            return <Todorow description={item.description} ID={item._id} fetchTodos = {fetchTodos}/>
+            return <Todorow description={item.description} ID={item._id} value = {[click,setClick]}/>
         })
       }
     </div>

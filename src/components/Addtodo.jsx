@@ -34,7 +34,7 @@ const Addtodo = () => {
     <div className="added-message w-full p-2 text-center h-12">
         <h1 className="text-xl">{responsemessage}</h1>
     </div>
-    <Todotable load={click}/>
+    <Todotable value = {[click,setClick]}/>
     </>
   )
 }

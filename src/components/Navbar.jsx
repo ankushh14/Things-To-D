@@ -20,7 +20,7 @@ const Navbar = () => {
                 <span className="bar border w-6 border-black"></span>
                 <span className="bar border w-6 border-black"></span>
                 </div>
-            <div className={`first-nav absolute ${nav?`top-0`:`-top-[1000px]`} z-50 h-full w-full left-0 bg-neutral-400 flex items-center flex-col space-y-12 py-4 transition-all duration-500 lg:transition-none lg:duration-0 lg:w-[88%] lg:justify-between lg:flex-row lg:py-0 lg:static lg:space-y-0 lg:h-auto`}>
+            <div className={`first-nav fixed ${nav?`top-0`:`-top-[1000px]`} z-50 h-full w-full left-0 bg-neutral-400 flex items-center flex-col space-y-12 py-4 transition-all duration-500 lg:transition-none lg:duration-0 lg:w-[88%] lg:justify-between lg:flex-row lg:py-0 lg:static lg:space-y-0 lg:h-auto`}>
             <div className="bars w-full flex my-2 lg:hidden justify-end">
                 <div className="lines2 flex flex-col space-y-2 px-4 lg:hidden" onClick={()=>setNav(!nav)}>
                 <span className="bar border w-6 border-black rotate-45 translate-y-1"></span>

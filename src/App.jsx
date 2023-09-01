@@ -5,10 +5,9 @@ import Home from './pages/Home';
 import Todo from './pages/Todo';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import { useCookies } from 'react-cookie';
+import Footer from './components/Footer';
 
 const App = () => {
-  const [cookies,setCookies] = useCookies(["things_token"]);
   return (
     <> 
     <BrowserRouter>
@@ -19,6 +18,7 @@ const App = () => {
       <Route path='/auth/signup' element={<Signup/>}></Route>
       <Route path='/auth/login' element={<Login/>}></Route>
     </Routes>
+    <Footer/>
     </BrowserRouter>
     </>
   )
