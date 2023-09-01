@@ -16,7 +16,7 @@ const Todotable = ({load}) => {
     <div className='mt-6 w-full flex flex-col justify-center items-center space-y-3 p-2'>
       {
         allTodos.map((item)=>{
-            return <Todorow description={item.description}/>
+            return <Todorow description={item.description} ID={item._id} fetchTodos = {fetchTodos}/>
         })
       }
     </div>

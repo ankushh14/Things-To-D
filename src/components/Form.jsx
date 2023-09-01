@@ -4,7 +4,7 @@ import { useCookies } from 'react-cookie';
 
 const Form = ({Type, onSubmit}) => {
     const [info,setInfo] = useState("Welcome to Things-To-D");
-    const [cookies,setCookies] = useCookies(["access_token"]);
+    const [cookies,setCookies] = useCookies(["things_token"]);
     const navigate = useNavigate();
     const handleSubmit = async(e)=>{
         e.preventDefault();
@@ -14,7 +14,7 @@ const Form = ({Type, onSubmit}) => {
             navigate("/auth/login");
         }
         if(retmessage.message === "Login Succesfull!"){
-            setCookies("access_token",retmessage.token);
+            setCookies("things_token",retmessage.token);
             window.localStorage.setItem("userID",retmessage.userID);
             navigate("/todo");
         }
@@ -33,10 +33,10 @@ const Form = ({Type, onSubmit}) => {
         </div>
         <form className='flex flex-col space-y-8' onSubmit={handleSubmit}>
             <div className="email-div w-full flex justify-center relative">
-                <input type="email" name="username" id="username" className='p-2 rounded-sm w-[90%] border border-black' placeholder='Email address'/>
+                <input type="email" name="username" id="username" className='p-2 rounded-sm w-[90%] border border-black' placeholder='Email address' autoComplete = 'off'/>
             </div>
             <div className="password-div w-full flex justify-center">
-                <input type="password" name="password" id="password" className='p-2 rounded-sm w-[90%]  border border-black' placeholder='Password'/>
+                <input type="password" name="password" id="password" className='p-2 rounded-sm w-[90%]  border border-black' placeholder='Password' autoComplete = 'off'/>
             </div>
             {
                 Type === "Register"? (

@@ -4,11 +4,11 @@ import { NavLink, useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
     const [nav,setNav] = useState(false);
-    const [cookies,setCookies] = useCookies(["access_token"]);
+    const [cookies,setCookies] = useCookies(["things_token"]);
     const navigate = useNavigate();
     const handleClicklog = ()=>{
         setNav(!nav);
-        setCookies("access_token","");
+        setCookies("things_token","");
         window.localStorage.removeItem("userID");
         navigate("/");
     }
@@ -28,7 +28,7 @@ const Navbar = () => {
                 </div>
             </div>
             {
-                cookies.access_token?(
+                cookies.things_token?(
                     <ul className='nav-list flex flex-col space-y-8 border-y-2 border-neutral-600 py-4 lg:flex-row lg:space-x-3 lg:space-y-0 w-[90%] text-center lg:border-none lg:py-0 lg:w-auto'>  
                         <NavLink to="/" className="cursor-pointer hover:text-slate-800 transition-colors duration-500" onClick={()=>setNav(!nav)}>Home</NavLink>
                         <NavLink to="/todo" className="cursor-pointer hover:text-slate-800 transition-colors duration-500" onClick={()=>setNav(!nav)}>ToDo</NavLink>
@@ -41,7 +41,7 @@ const Navbar = () => {
             
             <div className="nav-btns flex space-y-4 w-[90%] lg:space-x-4 flex-col justify-center lg:w-auto lg:flex-row lg:space-y-0 ">
                 {
-                    cookies.access_token?(
+                    cookies.things_token?(
                         <button className='p-2 px-4 bg-red-600 text-white text-center rounded-lg cursor-pointer hover:bg-red-500 transition-colors duration-500' onClick={handleClicklog}>LogOut</button>
                     ):(<>
                         <NavLink to="/auth/signup" className='p-2 px-4 bg-white rounded-lg text-center cursor-pointer border hover:bg-slate-200 transition-colors duration-500' onClick={()=>setNav(!nav)}>SignUp</NavLink>

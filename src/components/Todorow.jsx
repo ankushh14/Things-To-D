@@ -1,7 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaPen,FaTrash } from "react-icons/fa";
 
-const Todorow = ({description}) => {
+const Todorow = ({description ,ID , fetchTodos}) => {
+  
+  const [message,setMessage] = useState(false);
+  const handleDelete = async()=>{
+    await fetch(`http://localhost:8000/todos/deletetodo`,{method:"DELETE",mode:"cors",headers:{
+      "Content-Type": "application/json",
+    },body:JSON.stringify({
+      userID:ID
+    })})
+    setMessage(!message);
+  }
+  useEffect(()=>{
+    fetchTodos();
+  },[message])
   return (
     <div className='w-[70%] border text-black shadow-sm shadow-black rounded-md flex flex-row p-3 items-center justify-between'>
         <div className="desc-row flex flex-row items-center">
@@ -11,7 +24,7 @@ const Todorow = ({description}) => {
         <div className="btns-row flex items-center space-x-3">
             <FaPen className='cursor-pointer'/>
             <h1>|</h1>
-            <FaTrash className='cursor-pointer'/>
+            <FaTrash className='cursor-pointer' onClick={handleDelete}/>
         </div>
     </div>
   )
