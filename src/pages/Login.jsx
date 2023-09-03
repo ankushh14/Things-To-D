@@ -3,7 +3,7 @@ import Form from '../components/Form';
 
 const Login = () => {
   const onSubmit = async(e)=>{
-    const response = await fetch(`http://localhost:8000/auth/login`,{method:"POST",mode:"cors",headers:{"Content-Type": "application/json",},
+    const response = await fetch(`${process.env.BACKEND_API}/auth/login`,{method:"POST",mode:"cors",headers:{"Content-Type": "application/json",},
     body:JSON.stringify({
       username:e.target.username.value,
       password:e.target.password.value

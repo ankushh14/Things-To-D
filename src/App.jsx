@@ -5,7 +5,7 @@ import Home from './pages/Home';
 import Todo from './pages/Todo';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import Footer from './components/Footer';
+
 
 const App = () => {
   return (
@@ -18,7 +18,6 @@ const App = () => {
       <Route path='/auth/signup' element={<Signup/>}></Route>
       <Route path='/auth/login' element={<Login/>}></Route>
     </Routes>
-    <Footer/>
     </BrowserRouter>
     </>
   )

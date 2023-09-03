@@ -1,7 +1,9 @@
-import React from 'react'
+import React from 'react';
+import Footer from '../components/Footer'
 
 const Home = () => {
   return (
+    <>
     <div className='mt-4 w-full h-full flex justify-center mb-4'>
       <div className="home-div w-[90%] shadow-black shadow-sm rounded-sm p-4 flex flex-col md:flex-row">
         <div className="first-div w-full md:w-[50%] h-fit">
@@ -22,6 +24,8 @@ const Home = () => {
         </div>
       </div>
     </div>
+    <Footer/>
+    </>
   )
 }
 

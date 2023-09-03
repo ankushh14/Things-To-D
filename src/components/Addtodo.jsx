@@ -14,7 +14,7 @@ const Addtodo = () => {
         if(todo ===""){
             setResponsemessage("Please Write a ToDo!!")
         }else{
-        await fetch(`http://localhost:8000/todos/addtodo`,{method:"POST",mode:"cors",headers:{
+        await fetch(`${process.env.BACKEND_API}/todos/addtodo`,{method:"POST",mode:"cors",headers:{
             "Content-Type": "application/json",
         },
         body:JSON.stringify({

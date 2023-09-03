@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: './src/main.js',
@@ -13,10 +14,16 @@ module.exports = {
       template: "public/index.html",
       publicPath: '/',
     }),
+    new Dotenv(),
   ],
   devServer: {
     port: 3030,
     historyApiFallback: true,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
+      "Access-Control-Allow-Headers": "X-Requested-With, content-type, Authorization"
+    },
   },
   resolve: {
     extensions: ['.js', '.jsx']

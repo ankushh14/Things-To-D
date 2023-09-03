@@ -9,7 +9,7 @@ const Todotable = ({value}) => {
         fetchTodos();
     },[click])
     const fetchTodos = async()=>{
-        const response = await fetch(`http://localhost:8000/todos/gettodos?userID=${userId}`,{method:"GET",mode:"cors"})
+        const response = await fetch(`${process.env.BACKEND_API}/todos/gettodos?userID=${userId}`,{method:"GET",mode:"cors"})
         const data = await response.json();
         setAllTodos(data)
     }

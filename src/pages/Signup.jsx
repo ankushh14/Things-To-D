@@ -4,7 +4,7 @@ import Form from '../components/Form';
 const Signup = () => {
     const onSubmit = async(e)=>{
         if(e.target.password.value === e.target.confirmpassword.value){
-            const response = await fetch(`http://localhost:8000/auth/register`,{method:"POST", mode: "cors",headers: {
+            const response = await fetch(`${process.env.BACKEND_API}/auth/register`,{method:"POST", mode: "cors",headers: {
                 "Content-Type": "application/json",
               },
               body: JSON.stringify({

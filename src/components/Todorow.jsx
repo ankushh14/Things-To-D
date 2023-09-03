@@ -13,7 +13,7 @@ const Todorow = ({description ,ID ,value}) => {
 
   const handleUpdateClick = async() =>{
       setisDisabled(true)
-      await fetch(`http://localhost:8000/todos/updatetodo`,{method:"POST",mode:"cors",headers:{
+      await fetch(`${process.env.BACKEND_API}/todos/updatetodo`,{method:"POST",mode:"cors",headers:{
         "Content-Type": "application/json",
       },body:JSON.stringify({
         todoID:ID,
@@ -23,7 +23,7 @@ const Todorow = ({description ,ID ,value}) => {
   }
 
   const handleDelete = async()=>{
-    const response = await fetch(`http://localhost:8000/todos/deletetodo`,{method:"DELETE",mode:"cors",headers:{
+    const response = await fetch(`${process.env.BACKEND_API}/todos/deletetodo`,{method:"DELETE",mode:"cors",headers:{
       "Content-Type": "application/json",
     },body:JSON.stringify({
       todoID:ID
@@ -34,11 +34,11 @@ const Todorow = ({description ,ID ,value}) => {
   return (
     <>
     <div className='w-[90%] sm:w-[70%] border text-black shadow-sm shadow-black rounded-md flex flex-row p-3 items-center justify-between' id={ID}>
-        <div className="desc-row flex flex-row items-center">
-        <div className="rounded-full border-2 border-black mr-2 w-2 h-2"></div>
-        <input type="text" className={`todo bg-white px-2 border-black focus:outline-none ${!isDisabled?`border-b`:`border-none`}`} value={update} disabled = {isDisabled} onChange={handleUpdateChange} />
+        <div className="desc-row flex flex-row items-center w-full">
+        <div className="rounded-full border-2 border-black mr-2 w-2 h-2 "></div>
+        <input type="text" className={`todo bg-white px-2 border-black focus:outline-none w-full  ${!isDisabled?`border-b`:`border-none`}`} value={update} disabled = {isDisabled} onChange={handleUpdateChange} />
         </div>
-        <div className="btns-row flex items-center space-x-3">
+        <div className="btns-row flex items-center space-x-3 w-fit">
             <FaPen className='cursor-pointer' onClick={()=>setisDisabled(false)}/>
             <h1>|</h1>
             <FaTrash className='cursor-pointer' onClick={handleDelete}/>
