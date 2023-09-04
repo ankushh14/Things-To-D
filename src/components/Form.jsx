@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie'; 
+import Loader from './Loader/Loader';
 
 const Form = ({Type, onSubmit}) => {
     const [info,setInfo] = useState("Welcome to Things-To-D");
     const [cookies,setCookies] = useCookies(["things_token"]);
+    const [loader,setLoader] = useState(false);
     const navigate = useNavigate();
     const handleSubmit = async(e)=>{
         e.preventDefault();
+        setLoader(true);
         const retmessage = await onSubmit(e);
+        setLoader(false);
         setInfo(retmessage.message);
         if(retmessage.message === "User Succesfully Registered!!"){
             navigate("/auth/login");
@@ -50,8 +54,13 @@ const Form = ({Type, onSubmit}) => {
             <div className="submit-div w-full flex justify-center">
                 <input type="submit" value={Type} className=' cursor-pointer bg-blue-500 text-white w-[90%] p-2 rounded-sm hover:bg-blue-700 transition-colors duration-500'/>
             </div>
-            <div className="alertMessages  w-full flex justify-center">
-                <h1 className=" text-xl mb-8">{info}</h1>
+            <div className="alertMessages w-full flex justify-center">
+                <h1 className=" text-xl">{info}</h1>
+            </div>
+            <div className="loader-div w-full flex justify-center">
+                {
+                   loader && <Loader/>
+                }
             </div>
         </form>
       </div>
