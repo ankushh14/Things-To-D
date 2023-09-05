@@ -23,7 +23,7 @@ const Users = () => {
             })
         })
         setUser((prev)=>[...prev].filter(elem => elem.userID !== userID));
-        setnumber((prev)=>prev = prev-1)
+        setnumber((prev)=>prev = prev-1);
     }
     return (
         <>
