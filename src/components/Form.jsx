@@ -5,7 +5,7 @@ import Loader from './Loader/Loader';
 
 const Form = ({Type, onSubmit}) => {
     const [info,setInfo] = useState("Welcome to Things-To-D");
-    const [cookies,setCookies] = useCookies(["things_token"]);
+    const [cookies,setCookies] = useCookies(["things_token","admin_token"]);
     const [loader,setLoader] = useState(false);
     const navigate = useNavigate();
     const handleSubmit = async(e)=>{
@@ -21,6 +21,11 @@ const Form = ({Type, onSubmit}) => {
             setCookies("things_token",retmessage.token);
             window.localStorage.setItem("userID",retmessage.userID);
             navigate("/todo");
+        }
+        if(retmessage.message === "Login Succesfull! Welcome Admin"){
+            setCookies("admin_token",retmessage.adminToken);
+            window.localStorage.setItem("userID",retmessage.userID);
+            navigate("/users");
         }
     }
   return (

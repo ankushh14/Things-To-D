@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Todo from './pages/Todo';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
+import Users from './pages/Users';
 
 
 const App = () => {
@@ -15,8 +16,9 @@ const App = () => {
     <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='/todo' element= {<Todo/>}/>
-      <Route path='/auth/signup' element={<Signup/>}></Route>
-      <Route path='/auth/login' element={<Login/>}></Route>
+      <Route path='/auth/signup' element={<Signup/>}/>
+      <Route path='/auth/login' element={<Login/>}/>
+      <Route path='/users' element={<Users/>}/>
     </Routes>
     </BrowserRouter>
     </>

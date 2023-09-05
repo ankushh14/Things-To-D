@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { FaPen,FaTrash } from "react-icons/fa";
 
-const Todorow = ({description ,ID ,value}) => {
+const Todorow = ({description ,ID ,value,todos}) => {
   
   const [isDisabled,setisDisabled] = useState(true);
   const [update,setUpdate] = useState(description);
   const [click ,setClick] = value;
+  const [allTodos,setAllTodos] = todos;
 
   const handleUpdateChange = (e)=>{
     setUpdate(e.target.value);
