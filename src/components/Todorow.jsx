@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { FaPen,FaTrash } from "react-icons/fa";
 
-const Todorow = ({description ,ID ,value,todos}) => {
+const Todorow = ({description ,ID ,value,handleDelete}) => {
   
   const [isDisabled,setisDisabled] = useState(true);
-  const [update,setUpdate] = useState(description);
+  const [update,setUpdate] = useState("");
   const [click ,setClick] = value;
-  const [allTodos,setAllTodos] = todos;
+
+  useEffect(()=>{
+    setUpdate(description)
+  },[description])
 
   const handleUpdateChange = (e)=>{
     setUpdate(e.target.value);
@@ -23,15 +26,7 @@ const Todorow = ({description ,ID ,value,todos}) => {
       setClick(!click);
   }
 
-  const handleDelete = async()=>{
-    const response = await fetch(`${process.env.BACKEND_API}/todos/deletetodo`,{method:"DELETE",mode:"cors",headers:{
-      "Content-Type": "application/json",
-    },body:JSON.stringify({
-      todoID:ID
-    })})
-    const data = await response.json();
-    setClick(!click)
-  }
+
   return (
     <>
     <div className='w-[90%] sm:w-[70%] border text-black shadow-sm shadow-black rounded-md flex flex-row p-3 items-center justify-between' id={ID}>
@@ -42,7 +37,7 @@ const Todorow = ({description ,ID ,value,todos}) => {
         <div className="btns-row flex items-center space-x-3 w-fit">
             <FaPen className='cursor-pointer' onClick={()=>setisDisabled(false)}/>
             <h1>|</h1>
-            <FaTrash className='cursor-pointer' onClick={handleDelete}/>
+            <FaTrash className='cursor-pointer' onClick={()=>{handleDelete(ID)}}/>
         </div>
     </div>
     <div className="update-btn w-[70%]">
