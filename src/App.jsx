@@ -6,6 +6,8 @@ import Todo from './pages/Todo';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Users from './pages/Users';
+import ProtectedRoute from '../util/ProtectedRoute';
+import AdminRoute from '../util/AdminRoute';
 
 
 const App = () => {
@@ -15,10 +17,14 @@ const App = () => {
     <Navbar/>
     <Routes>
       <Route path='/' element={<Home/>}/>
-      <Route path='/todo' element= {<Todo/>}/>
       <Route path='/auth/signup' element={<Signup/>}/>
       <Route path='/auth/login' element={<Login/>}/>
-      <Route path='/users' element={<Users/>}/>
+      <Route element = {<ProtectedRoute/>}>
+        <Route path='/todo' element= {<Todo/>}/>
+      </Route>
+      <Route element={<AdminRoute/>}>
+        <Route path='/users' element={<Users/>}/>
+      </Route>
     </Routes>
     </BrowserRouter>
     </>
